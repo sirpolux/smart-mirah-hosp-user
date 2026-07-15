@@ -3,7 +3,7 @@ import Container from "@/Components/Layout/Container";
 import SectionTitle from "@/Components/UI/SectionTitle";
 import Button from "@/Components/UI/Button";
 
-import ProductGrid from "./ProductGrid";
+import ProductGrid from "../../Layouts/Product/ProductGrid";
 
 import { products } from "@/data/products";
 
