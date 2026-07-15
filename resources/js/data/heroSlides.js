@@ -1,6 +1,6 @@
-import bathroom from "@/assets/images/hero/bathroom.jpg";
-import bedroom from "@/assets/images/hero/bedroom.jpg";
-import toiletries from "@/assets/images/hero/toiletries.jpg";
+import bathroom from "@/assets/images/hero/bathroom.svg";
+import bedroom from "@/assets/images/hero/bedroom.svg";
+import toiletries from "@/assets/images/hero/toiletries.svg";
 
 export const heroSlides = [
     {

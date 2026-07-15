@@ -1,9 +1,9 @@
-import Section from "@/Components/Layout/Section";
-import Container from "@/Components/Layout/Container";
+import Section from "@/Layouts/Section";
+import Container from "@/Layouts/Container";
 import SectionTitle from "@/Components/UI/SectionTitle";
 
-import ContactInfo from "./ContactInfo";
-import ContactForm from "./ContactForm";
+import ContactInfo from "@/Layouts/Contact/ContactInfo";
+import ContactForm from "@/Layouts/Contact/ContactForm";
 
 export default function Contact() {
     return (

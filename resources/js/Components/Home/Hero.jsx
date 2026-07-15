@@ -1,4 +1,4 @@
-import Container from "@/Components/Layout/Container";
+import Container from "@/Layouts/Container";
 import HeroSlider from "../../Layouts/Hero/HeroSlider";
 
 export default function Hero() {

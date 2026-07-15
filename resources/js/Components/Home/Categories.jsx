@@ -1,8 +1,8 @@
-import Container from "@/Components/Layout/Container";
-import Section from "@/Components/Layout/Section";
+import Container from "@/Layouts/Container";
+import Section from "@/Layouts/Section";
 import SectionTitle from "@/Components/UI/SectionTitle";
 
-import CategoryCard from "@/Components/Cards/CategoryCard";
+import CategoryCard from "@/Components/Cards/CategoryCards";
 
 import { categories } from "@/data/categories";
 

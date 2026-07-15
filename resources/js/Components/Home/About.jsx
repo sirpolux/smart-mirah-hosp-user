@@ -1,11 +1,11 @@
-import Container from "@/Components/Layout/Container";
-import Section from "@/Components/Layout/Section";
+import Container from "@/Layouts/Container";
+import Section from "@/Layouts/Section";
 import Button from "@/Components/UI/Button";
 import SectionTitle from "@/Components/UI/SectionTitle";
-import StatCard from "@/Components/Cards/StatCard";
+import StatCard from "@/Layouts/StatsCard";
 import { stats } from "@/data/stats";
 
-import aboutImage from "@/assets/images/about/about.jpg";
+import aboutImage from "@/assets/images/about/about.svg";
 
 export default function About() {
     return (

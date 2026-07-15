@@ -1,6 +1,6 @@
 import useEmblaCarousel from "embla-carousel-react";
 
-import TestimonialCard from "@/Components/Cards/TestimonialCard";
+import TestimonialCard from "@/Layouts/Testimonial/TestimonialCard";
 
 export default function TestimonialSlider({
     testimonials,

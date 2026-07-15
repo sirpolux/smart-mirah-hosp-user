@@ -1,5 +1,5 @@
-import Navbar from "@/Components/Layout/Navbar";
-import Footer from "@/Components/Layout/Footer";
+import Navbar from "@/Layouts/NavBar";
+import Footer from "@/Layouts/Footer";
 
 export default function GuestLayout({
     children,

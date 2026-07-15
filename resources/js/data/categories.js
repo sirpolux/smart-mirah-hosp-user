@@ -1,9 +1,9 @@
-import towel from "@/assets/images/categories/towel.jpg";
-import toiletries from "@/assets/images/categories/toiletries.jpg";
-import slippers from "@/assets/images/categories/slippers.jpg";
-import linen from "@/assets/images/categories/linen.jpg";
-import branding from "@/assets/images/categories/branding.jpg";
-import cleaning from "@/assets/images/categories/cleaning.jpg";
+import towel from "@/assets/images/categories/towel.svg";
+import toiletries from "@/assets/images/categories/toiletries.svg";
+import slippers from "@/assets/images/categories/slippers.svg";
+import linen from "@/assets/images/categories/linen.svg";
+import branding from "@/assets/images/categories/branding.svg";
+import cleaning from "@/assets/images/categories/cleaning.svg";
 
 import {
     Bath,

@@ -1,5 +1,5 @@
 import Container from "./Container";
-import Logo from "../Shared/Logo";
+import Logo from "@/Components/Shared/Logo";
 
 export default function Footer() {
     return (

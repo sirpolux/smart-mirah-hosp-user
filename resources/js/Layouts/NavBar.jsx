@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Phone, Menu, ShoppingCart } from "lucide-react";
 
 import Container from "./Container";
-import Logo from "../Shared/Logo";
-import NavLink from "./NavLink";
+import Logo from "@/Components/Shared/Logo";
+import NavLink from "./NavLinks";
 import MobileMenu from "./MobileMenu";
-import Button from "../UI/Button";
+import Button from "@/Components/UI/Button";
 
 import { navigation } from "@/data/navigation";
 

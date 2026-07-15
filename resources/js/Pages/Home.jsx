@@ -5,7 +5,7 @@ import Clients from "@/Components/Home/Clients";
 import About from "@/Components/Home/About";
 import Categories from "@/Components/Home/Categories";
 import WhyChooseUs from "@/Components/Home/WhyChooseUs";
-import FeaturedProducts from "@/Components/Home/FeaturedProducts";
+import FeaturedProducts from "@/Components/Home/FeaturedProduct";
 import Process from "@/Components/Home/Process";
 import Testimonials from "@/Components/Home/Testimonials";
 import CTA from "@/Components/Home/CTA";

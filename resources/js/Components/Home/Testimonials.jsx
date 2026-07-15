@@ -1,8 +1,8 @@
-import Section from "@/Components/Layout/Section";
-import Container from "@/Components/Layout/Container";
+import Section from "@/Layouts/Section";
+import Container from "@/Layouts/Container";
 import SectionTitle from "@/Components/UI/SectionTitle";
 
-import TestimonialSlider from "./TestimonialSlider";
+import TestimonialSlider from "@/Layouts/Testimonial/TestimonialSlider";
 
 import { testimonials } from "@/data/testimonials";
 

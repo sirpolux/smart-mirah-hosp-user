@@ -1,10 +1,10 @@
-import Section from "@/Components/Layout/Section";
-import Container from "@/Components/Layout/Container";
+import Section from "@/Layouts/Section";
+import Container from "@/Layouts/Container";
 import SectionTitle from "@/Components/UI/SectionTitle";
 
 import ProcessCard from "@/Components/Cards/ProcessCard";
 
-import { processSteps } from "@/data/process";
+import { processSteps } from "@/data/processSteps";
 
 export default function Process() {
     return (

@@ -1,7 +1,7 @@
-import Container from "@/Components/Layout/Container";
-import Section from "@/Components/Layout/Section";
+import Container from "@/Layouts/Container";
+import Section from "@/Layouts/Section";
 import SectionTitle from "@/Components/UI/SectionTitle";
-import ClientLogo from "@/Components/Cards/ClientLogo";
+import ClientLogo from "@/Layouts/Client/ClientLogo";
 import { clients } from "@/data/clients";
 
 export default function Clients() {

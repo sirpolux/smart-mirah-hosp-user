@@ -1,7 +1,7 @@
-import towel from "@/assets/images/products/towel.jpg";
-import linen from "@/assets/images/products/linen.jpg";
-import toiletries from "@/assets/images/products/toiletries.jpg";
-import slipper from "@/assets/images/products/slipper.jpg";
+import towel from "@/assets/images/products/towel.svg";
+import linen from "@/assets/images/products/linen.svg";
+import toiletries from "@/assets/images/products/toiletries.svg";
+import slipper from "@/assets/images/products/slipper.svg";
 
 export const products = [
     {
