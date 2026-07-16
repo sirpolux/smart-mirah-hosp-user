@@ -1,5 +1,6 @@
 import HeroOverlay from "./HeroOverlay";
 import HeroContent from "./HeroContent";
+import Container from "../Container";
 
 export default function HeroSlide({
     slide,
@@ -15,11 +16,11 @@ export default function HeroSlide({
 
             <HeroOverlay />
 
-            <div className="relative z-10 flex h-full items-center">
+            <Container className="relative z-10 flex h-full items-center">
 
                 <HeroContent slide={slide} />
 
-            </div>
+            </Container>
 
         </div>
     );
