@@ -4,7 +4,7 @@ export default function ClientLogo({ logo, name }) {
             <img
                 src={logo}
                 alt={name}
-                className="h-16 w-auto object-contain grayscale transition duration-300 hover:grayscale-0"
+                className="h-20 w-auto object-contain grayscale transition duration-300 hover:grayscale-0"
             />
         </div>
     );

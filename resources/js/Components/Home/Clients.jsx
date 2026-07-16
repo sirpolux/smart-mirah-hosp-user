@@ -15,7 +15,7 @@ export default function Clients() {
                     description="We proudly supply premium hospitality products to hotels, apartments, resorts and guest houses."
                 />
 
-                <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-center" >
 
                     {clients.map(client => (
                         <ClientLogo

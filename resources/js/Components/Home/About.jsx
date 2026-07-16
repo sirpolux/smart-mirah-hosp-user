@@ -5,7 +5,7 @@ import SectionTitle from "@/Components/UI/SectionTitle";
 import StatCard from "@/Layouts/StatsCard";
 import { stats } from "@/data/stats";
 
-import aboutImage from "@/assets/images/about/about.svg";
+import aboutImage from "@/assets/images/about/about.png";
 
 export default function About() {
     return (
