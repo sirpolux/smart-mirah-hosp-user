@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->string('account_name');
+            $table->string('account_number');
+            $table->string('bank_name');
+            $table->boolean('is_primary_account')->default(false);
             $table->timestamps();
         });
     }

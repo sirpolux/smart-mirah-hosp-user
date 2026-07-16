@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cart_id')->constrained('carts')->nullOnDelete();
+            $table->foreignId('item_id')->constrained('items')->nullOnDelete();
+            $table->integer('quantity');
+            $table->double('unit_price');
+            $table->double('total_price');
             $table->timestamps();
         });
     }

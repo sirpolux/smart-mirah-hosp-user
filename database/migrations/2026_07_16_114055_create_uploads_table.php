@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
+            $table->string('file_name')->nullable();
+            $table->string('file_path');
+            $table->string('file_type')->nullable();
+            $table->foreignId('uploaded_by')->constrained('users')->nullOnDelete();
+            $table->foreignId('item_id')->nullable()->constrained('items')->nullOnDelete();
+            $table->foreignId('transaction_id')->nullable()->constrained('transactions')->nullOnDelete();
             $table->timestamps();
         });
     }
