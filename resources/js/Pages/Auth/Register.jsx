@@ -1,23 +1,23 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm } from "@inertiajs/react";
+import { Mail, Lock, User, UserPlus } from "lucide-react";
+
+import GuestLayout from "@/Layouts/GuestLayout";
+import AuthCard from "@/Components/Auth/AuthCard";
+import AuthInput from "@/Components/Auth/AuthInput";
+import Button from "@/Components/UI/Button";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
     });
 
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('register'), {
-            onFinish: () => reset('password', 'password_confirmation'),
+        post(route("register"), {
+            onFinish: () => reset("password", "password_confirmation"),
         });
     };
 
@@ -25,96 +25,113 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
+            <AuthCard
+                title="Create your account"
+                subtitle="Join SmartMirah and start ordering premium hospitality supplies."
+            >
+                <form onSubmit={submit} className="space-y-5">
+                    <AuthInput
                         id="name"
-                        name="name"
+                        label="Full Name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        onChange={(e) => setData("name", e.target.value)}
+                        error={errors.name}
+                        icon={User}
+                        placeholder="John Doe"
                         autoComplete="name"
-                        isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
+                        isFocused
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
+                    <AuthInput
                         id="email"
+                        label="Email"
                         type="email"
-                        name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        onChange={(e) => setData("email", e.target.value)}
+                        error={errors.email}
+                        icon={Mail}
+                        placeholder="you@example.com"
                         autoComplete="username"
-                        onChange={(e) => setData('email', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
+                    <AuthInput
                         id="password"
+                        label="Password"
                         type="password"
-                        name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        onChange={(e) => setData("password", e.target.value)}
+                        error={errors.password}
+                        icon={Lock}
+                        placeholder="Create a password"
                         autoComplete="new-password"
-                        onChange={(e) => setData('password', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
-                    <TextInput
+                    <AuthInput
                         id="password_confirmation"
+                        label="Confirm Password"
                         type="password"
-                        name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
                         onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
+                            setData("password_confirmation", e.target.value)
                         }
+                        error={errors.password_confirmation}
+                        icon={Lock}
+                        placeholder="Confirm your password"
+                        autoComplete="new-password"
                         required
                     />
 
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    <Link
-                        href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    <Button
+                        type="submit"
+                        disabled={processing}
+                        className="w-full"
+                        size="lg"
                     >
-                        Already registered?
-                    </Link>
+                        {processing ? (
+                            <span className="flex items-center gap-2">
+                                <svg
+                                    className="h-4 w-4 animate-spin"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <circle
+                                        className="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        strokeWidth="4"
+                                    />
+                                    <path
+                                        className="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                    />
+                                </svg>
+                                Creating account...
+                            </span>
+                        ) : (
+                            <span className="flex items-center gap-2">
+                                <UserPlus size={18} />
+                                Create account
+                            </span>
+                        )}
+                    </Button>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
-                </div>
-            </form>
+                    <p className="text-center text-sm text-slate-600">
+                        Already have an account?{" "}
+                        <Link
+                            href={route("login")}
+                            className="font-semibold text-primary-600 hover:text-primary-700"
+                        >
+                            Sign in
+                        </Link>
+                    </p>
+                </form>
+            </AuthCard>
         </GuestLayout>
     );
 }

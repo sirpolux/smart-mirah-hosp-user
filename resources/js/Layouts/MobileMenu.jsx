@@ -1,12 +1,14 @@
-import { X } from "lucide-react";
+import { X, User } from "lucide-react";
 import { navigation } from "@/data/navigation";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import Button from "@/Components/UI/Button";
 
 export default function MobileMenu({
     open,
     onClose,
 }) {
+    const user = usePage().props.auth?.user ?? null;
+
     if (!open) return null;
 
     return (
@@ -31,12 +33,45 @@ export default function MobileMenu({
                         key={item.name}
                         href={item.href}
                         onClick={onClose}
+                        className="text-slate-700 font-medium"
                     >
                         {item.name}
                     </Link>
                 ))}
 
-                <Button className="mt-4">
+                <hr className="border-slate-200" />
+
+                {user ? (
+                    <Link
+                        href={route("dashboard")}
+                        onClick={onClose}
+                        className="flex items-center gap-2 font-medium text-slate-700"
+                    >
+                        <User size={18} />
+                        {user.name}
+                    </Link>
+                ) : (
+                    <>
+                        <Link
+                            href={route("login")}
+                            onClick={onClose}
+                            className="font-medium text-slate-700"
+                        >
+                            Sign In
+                        </Link>
+
+                        <Link
+                            href={route("register")}
+                            onClick={onClose}
+                        >
+                            <Button className="w-full">
+                                Create Account
+                            </Button>
+                        </Link>
+                    </>
+                )}
+
+                <Button variant="outline" className="w-full">
                     Request Quote
                 </Button>
 

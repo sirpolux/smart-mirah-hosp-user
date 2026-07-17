@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Phone, Menu, ShoppingCart } from "lucide-react";
+import { Phone, Menu, ShoppingCart, User } from "lucide-react";
+import { Link, usePage } from "@inertiajs/react";
 
 import Container from "./Container";
 import Logo from "@/Components/Shared/Logo";
@@ -11,6 +12,7 @@ import { navigation } from "@/data/navigation";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const user = usePage().props.auth?.user ?? null;
 
     return (
         <>
@@ -46,7 +48,32 @@ export default function Navbar() {
                                 Call Us
                             </a>
 
-                            <Button size="sm">
+                            {user ? (
+                                <Link
+                                    href={route("dashboard")}
+                                    className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                                >
+                                    <User size={18} />
+                                    {user.name}
+                                </Link>
+                            ) : (
+                                <>
+                                    <Link
+                                        href={route("login")}
+                                        className="text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                                    >
+                                        Sign In
+                                    </Link>
+
+                                    <Link href={route("register")}>
+                                        <Button size="sm">
+                                            Create Account
+                                        </Button>
+                                    </Link>
+                                </>
+                            )}
+
+                            <Button size="sm" variant="outline">
                                 Request Quote
                             </Button>
 
