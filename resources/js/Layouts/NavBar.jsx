@@ -50,7 +50,7 @@ export default function Navbar() {
 
                             {user ? (
                                 <Link
-                                    href={route("dashboard")}
+                                    href={route("profile.details")}
                                     className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
                                 >
                                     <User size={18} />

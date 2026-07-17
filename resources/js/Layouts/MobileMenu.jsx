@@ -43,7 +43,7 @@ export default function MobileMenu({
 
                 {user ? (
                     <Link
-                        href={route("dashboard")}
+                        href={route("profile.details")}
                         onClick={onClose}
                         className="flex items-center gap-2 font-medium text-slate-700"
                     >

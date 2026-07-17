@@ -20,13 +20,16 @@ Route::get('/services', fn () => Inertia::render('Home'))->name('services');
 Route::get('/contact', fn () => Inertia::render('Home'))->name('contact');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect()->route('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile/details', [\App\Http\Controllers\UserDetailController::class, 'show'])->name('profile.details');
+    Route::patch('/profile/details', [\App\Http\Controllers\UserDetailController::class, 'update'])->name('profile.details.update');
 });
 
 require __DIR__.'/auth.php';
