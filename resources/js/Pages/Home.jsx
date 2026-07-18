@@ -11,7 +11,7 @@ import Testimonials from "@/Components/Home/Testimonials";
 import CTA from "@/Components/Home/CTA";
 import Contact from "@/Components/Home/Contact";
 
-export default function Home() {
+export default function Home({ items }) {
     return (
         <GuestLayout>
             <Hero />
@@ -19,7 +19,7 @@ export default function Home() {
             <About />
             {/* <Categories /> */}
             <WhyChooseUs />
-            <FeaturedProducts />
+            <FeaturedProducts items={items} />
             <Process />
             <Testimonials />
             <CTA />
