@@ -2,17 +2,29 @@ import Card from "@/Components/UI/Card";
 import Button from "@/Components/UI/Button";
 import { Eye, ShoppingBag } from "lucide-react";
 import { useState } from "react";
+import { Link, router } from "@inertiajs/react";
+import { useCart } from "@/Context/CartContext";
 
 export default function ProductCard({
+    id,
     image,
     category_name,
     category,
     item_name,
     price,
 }) {
+    const { addToCart, loading } = useCart();
     const [imgError, setImgError] = useState(false);
     const displayImage = image && !imgError ? image : null;
     const displayCategory = category_name || category?.name || "General";
+
+    const handleAddToCart = () => {
+        addToCart(id, 1);
+    };
+
+    const handleViewDetail = () => {
+        router.visit(route("products.show", id));
+    };
 
     return (
         <Card className="group overflow-hidden p-0">
@@ -50,17 +62,22 @@ export default function ProductCard({
 
                 <div className="flex gap-3">
 
-                    <Button className="flex-1">
+                    <Button
+                        className="flex-1"
+                        onClick={handleAddToCart}
+                        disabled={loading}
+                    >
                         <ShoppingBag size={18} />
 
                         <span className="ml-2">
-                            Quote
+                            {loading ? "Adding..." : "Quote"}
                         </span>
                     </Button>
 
                     <Button
                         variant="outline"
                         size="icon"
+                        onClick={handleViewDetail}
                     >
                         <Eye size={18} />
                     </Button>

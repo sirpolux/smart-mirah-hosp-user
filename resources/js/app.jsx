@@ -4,6 +4,7 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
+import { CartProvider } from '@/Context/CartContext';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -17,7 +18,29 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<App {...props} />);
+        root.render(
+            <App {...props}>
+                {({ Component, props: pageProps, key }) => {
+                    const child = <Component key={key} {...pageProps} />;
+
+                    let wrapped = child;
+                    if (typeof Component.layout === 'function') {
+                        wrapped = Component.layout(child);
+                    } else if (Array.isArray(Component.layout)) {
+                        wrapped = Component.layout
+                            .concat(child)
+                            .reverse()
+                            .reduce(
+                                (children, Layout) => (
+                                    <Layout {...pageProps}>{children}</Layout>
+                                ),
+                            );
+                    }
+
+                    return <CartProvider>{wrapped}</CartProvider>;
+                }}
+            </App>
+        );
     },
     progress: {
         color: '#4B5563',

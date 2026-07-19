@@ -7,11 +7,15 @@ import Logo from "@/Components/Shared/Logo";
 import NavLink from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import Button from "@/Components/UI/Button";
+import CartSidebar from "@/Components/Cart/CartSidebar";
+import { useCart } from "@/Context/CartContext";
 
 import { navigation } from "@/data/navigation";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const { itemCount } = useCart();
     const user = usePage().props.auth?.user ?? null;
 
     return (
@@ -77,10 +81,20 @@ export default function Navbar() {
                                 Request Quote
                             </Button>
 
-                            <ShoppingCart
-                                size={22}
-                                className="cursor-pointer"
-                            />
+                            <button
+                                onClick={() => setCartOpen(true)}
+                                className="relative"
+                            >
+                                <ShoppingCart
+                                    size={22}
+                                    className="cursor-pointer text-slate-700 hover:text-primary-600 transition-colors"
+                                />
+                                {itemCount > 0 && (
+                                    <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white">
+                                        {itemCount > 99 ? "99+" : itemCount}
+                                    </span>
+                                )}
+                            </button>
 
                         </div>
 
@@ -100,6 +114,11 @@ export default function Navbar() {
             <MobileMenu
                 open={open}
                 onClose={() => setOpen(false)}
+            />
+
+            <CartSidebar
+                open={cartOpen}
+                onClose={() => setCartOpen(false)}
             />
         </>
     );
