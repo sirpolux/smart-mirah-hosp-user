@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CartItem extends Model
+class OrderItem extends Model
 {
-    /** @use HasFactory<\Database\Factories\CartItemFactory> */
+    /** @use HasFactory<\Database\Factories\OrderItemFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'cart_id',
+        'order_id',
         'item_id',
         'quantity',
         'unit_price',
@@ -25,9 +25,9 @@ class CartItem extends Model
         'total_price' => 'float',
     ];
 
-    public function cart(): BelongsTo
+    public function order(): BelongsTo
     {
-        return $this->belongsTo(Cart::class, 'cart_id');
+        return $this->belongsTo(Order::class, 'order_id');
     }
 
     public function item(): BelongsTo
