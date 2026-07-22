@@ -23,7 +23,7 @@ class HomeController extends Controller
             ->get();
 
 
-            dd($items);
+            // dd($items);
 
         return Inertia::render('Home', [
             'canLogin' => Route::has('login'),

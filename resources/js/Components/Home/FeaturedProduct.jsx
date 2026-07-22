@@ -7,6 +7,7 @@ import Button from "@/Components/UI/Button";
 import ProductGrid from "../../Layouts/Product/ProductGrid";
 
 export default function FeaturedProducts({ items = [] }) {
+    console.log("Featured Products Items:", items); // Debugging line to check the items prop
     return (
         <Section>
 
@@ -18,7 +19,7 @@ export default function FeaturedProducts({ items = [] }) {
                     description="Browse some of our most requested hospitality products trusted by hotels across Nigeria."
                 />
 
-                <ProductGrid products={items} />
+                <ProductGrid products={items.data} />
 
                 <div className="mt-16 flex justify-center">
 
