@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Resources\CartResource;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -14,6 +15,22 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
+    /**
+     * Display the checkout page with the user's active cart.
+     */
+    public function checkout()
+    {
+        $user = Auth::user();
+        $cart = Cart::with(['items.item.uploads', 'items.item.category'])
+            ->where('user_id', $user->id)
+            ->where('status', 'active')
+            ->first();
+
+        return Inertia::render('Checkout', [
+            'cart' => $cart ? new CartResource($cart) : null,
+        ]);
+    }
+
     /**
      * Display a listing of the user's orders.
      */

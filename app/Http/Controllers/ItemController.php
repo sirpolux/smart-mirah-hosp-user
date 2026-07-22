@@ -6,11 +6,12 @@ use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Resources\ItemResource;
 use App\Models\Item;
+use Inertia\Inertia;
 
 class ItemController extends Controller
 {
     /**
-     * Display a listing of the resource (paginated for products page).
+     * Display a paginated listing of available items (products page).
      */
     public function index()
     {
@@ -20,11 +21,13 @@ class ItemController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(12);
 
-        return ItemResource::collection($items);
+        return Inertia::render('Products', [
+            'items' => ItemResource::collection($items),
+        ]);
     }
 
     /**
-     * Get the latest available items for the home page.
+     * Display the latest available items for the home page.
      */
     public function latest()
     {
@@ -55,13 +58,15 @@ class ItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified product detail page.
      */
     public function show(Item $item)
     {
         $item->load(['category', 'uploads', 'details']);
 
-        return new ItemResource($item);
+        return Inertia::render('ProductDetail', [
+            'product' => new ItemResource($item),
+        ]);
     }
 
     /**
