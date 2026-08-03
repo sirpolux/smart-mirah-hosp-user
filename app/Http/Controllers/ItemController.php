@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\ItemResourceTwo;
 use App\Models\Item;
 use Inertia\Inertia;
 
@@ -65,7 +66,7 @@ class ItemController extends Controller
         $item->load(['category', 'uploads', 'details']);
 
         return Inertia::render('ProductDetail', [
-            'product' => new ItemResource($item),
+            'product' => new ItemResourceTwo($item),
         ]);
     }
 
