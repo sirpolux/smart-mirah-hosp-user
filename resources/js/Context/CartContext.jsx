@@ -38,6 +38,11 @@ export function CartProvider({ children }) {
         });
     }, []);
 
+    const clearCart = useCallback(() => {
+        setCart(null);
+        setLoading(false);
+    }, []);
+
     return (
         <CartContext.Provider value={{
             cart,
@@ -46,6 +51,7 @@ export function CartProvider({ children }) {
             addToCart,
             updateQuantity,
             removeItem,
+            clearCart,
         }}>
             {children}
         </CartContext.Provider>

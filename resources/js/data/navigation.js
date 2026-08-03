@@ -19,4 +19,8 @@ export const navigation = [
         name: "Contact",
         href: route("contact"),
     },
+    {
+        name: "Cart",
+        href: route("cart.index"),
+    },
 ];

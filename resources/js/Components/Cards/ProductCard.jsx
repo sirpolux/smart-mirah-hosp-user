@@ -70,7 +70,7 @@ export default function ProductCard({
                         <ShoppingBag size={18} />
 
                         <span className="ml-2">
-                            {loading ? "Adding..." : "Quote"}
+                            {loading ? "Adding..." : "Add to Cart"}
                         </span>
                     </Button>
 

@@ -5,7 +5,7 @@ import Button from "@/Components/UI/Button";
 import { useCart } from "@/Context/CartContext";
 
 export default function CartSidebar({ open, onClose }) {
-    const { cart, loading, itemCount, updateQuantity, removeItem, clearCart } = useCart();
+    const { cart, loading, itemCount, updateQuantity, removeItem } = useCart();
 
     const items = cart?.items ?? [];
 

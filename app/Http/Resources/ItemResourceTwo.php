@@ -20,9 +20,9 @@ class ItemResourceTwo extends JsonResource
             'item_description' => $this->item_description,
             'manufacturer' => $this->manufacturer,
             'price' => (float) $this->price,
-            'quantity' => $this->quantity,
+            // 'quantity' => $this->quantity,
             'status' => $this->status,
-            'category_id' => $this->category_id,
+            // 'category_id' => $this->category_id,
             'category' => $this->whenLoaded('category', fn () => [
                 'id' => $this->category->id,
                 'name' => $this->category->name,
@@ -39,8 +39,8 @@ class ItemResourceTwo extends JsonResource
                     'data' => $d->data,
                 ])
             ),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

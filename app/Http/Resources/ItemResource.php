@@ -37,8 +37,8 @@ class ItemResource extends JsonResource
                     'data' => $d->data,
                 ])
             ),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

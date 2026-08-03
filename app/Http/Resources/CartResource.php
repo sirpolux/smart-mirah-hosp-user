@@ -21,8 +21,8 @@ class CartResource extends JsonResource
             'total_price' => (float) $this->total_price,
             'status' => $this->status,
             'items' => CartItemResource::collection($this->whenLoaded('items')),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

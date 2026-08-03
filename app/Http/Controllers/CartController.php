@@ -7,11 +7,12 @@ use App\Http\Requests\UpdateCartRequest;
 use App\Http\Resources\CartResource;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class CartController extends Controller
 {
     /**
-     * Get the authenticated user's active cart.
+     * Display the authenticated user's active cart page.
      */
     public function index()
     {
@@ -22,14 +23,9 @@ class CartController extends Controller
             ->where('status', 'active')
             ->first();
 
-        if (!$cart) {
-            return response()->json([
-                'data' => null,
-                'message' => 'No active cart found.',
-            ]);
-        }
-
-        return new CartResource($cart);
+        return Inertia::render('Cart', [
+            'cart' => $cart ? new CartResource($cart) : null,
+        ]);
     }
 
     /**
