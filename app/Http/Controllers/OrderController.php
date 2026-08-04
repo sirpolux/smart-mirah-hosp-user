@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\CartResource;
+use App\Http\Resources\UserDetailsResource;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -28,6 +29,7 @@ class OrderController extends Controller
 
         return Inertia::render('Checkout', [
             'cart' => $cart ? new CartResource($cart) : null,
+            'user_details' => new UserDetailsResource($user->detail),
         ]);
     }
 

@@ -5,11 +5,12 @@ import Section from "@/Layouts/Section";
 import Container from "@/Layouts/Container";
 import Button from "@/Components/UI/Button";
 import Card from "@/Components/UI/Card";
+import CartItemRow from "@/Components/Cart/CartItemRow";
 import { useCart } from "@/Context/CartContext";
-import { ShoppingBag, Trash2, Plus, Minus, ArrowLeft, Loader2 } from "lucide-react";
+import { ShoppingBag, ArrowLeft } from "lucide-react";
 
 export default function Cart() {
-    const { cart, loading, updateQuantity, removeItem } = useCart();
+    const { cart, loading, removeItem } = useCart();
     const [removingId, setRemovingId] = useState(null);
 
     const items = cart?.items ?? [];
@@ -71,82 +72,12 @@ export default function Cart() {
                             {/* Cart items */}
                             <div className="space-y-4 lg:col-span-2">
                                 {items.map((cartItem) => (
-                                    <Card
+                                    <CartItemRow
                                         key={cartItem.id}
-                                        className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center"
-                                    >
-                                        {/* Image */}
-                                        <div className="h-28 w-full flex-shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:h-24 sm:w-24">
-                                            {cartItem.item?.image ? (
-                                                <img
-                                                    src={cartItem.item.image}
-                                                    alt={cartItem.item.item_name ?? "Product"}
-                                                    className="h-full w-full object-cover"
-                                                />
-                                            ) : (
-                                                <div className="flex h-full w-full items-center justify-center text-slate-300">
-                                                    <ShoppingBag size={32} />
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* Details */}
-                                        <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                                            <div>
-                                                <h3 className="font-semibold text-slate-800">
-                                                    {cartItem.item?.item_name ?? "Product"}
-                                                </h3>
-                                                <p className="mt-1 text-sm text-slate-500">
-                                                    ₦{Number(cartItem.unit_price).toLocaleString()} each
-                                                </p>
-                                            </div>
-
-                                            <div className="flex items-center gap-4">
-                                                {/* Quantity controls */}
-                                                <div className="flex items-center rounded-xl border border-slate-200 bg-white">
-                                                    <button
-                                                        onClick={() =>
-                                                            updateQuantity(cartItem.id, cartItem.quantity - 1)
-                                                        }
-                                                        disabled={cartItem.quantity <= 1}
-                                                        className="flex h-10 w-10 items-center justify-center rounded-l-xl text-slate-600 hover:bg-slate-100 disabled:opacity-30"
-                                                    >
-                                                        <Minus size={16} />
-                                                    </button>
-                                                    <span className="flex h-10 min-w-[2.5rem] items-center justify-center text-sm font-semibold">
-                                                        {cartItem.quantity}
-                                                    </span>
-                                                    <button
-                                                        onClick={() =>
-                                                            updateQuantity(cartItem.id, cartItem.quantity + 1)
-                                                        }
-                                                        className="flex h-10 w-10 items-center justify-center rounded-r-xl text-slate-600 hover:bg-slate-100"
-                                                    >
-                                                        <Plus size={16} />
-                                                    </button>
-                                                </div>
-
-                                                {/* Line total */}
-                                                <span className="w-24 text-right font-bold text-primary-600">
-                                                    ₦{Number(cartItem.total_price).toLocaleString()}
-                                                </span>
-
-                                                {/* Remove */}
-                                                <button
-                                                    onClick={() => handleRemove(cartItem.id)}
-                                                    disabled={removingId === cartItem.id}
-                                                    className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500 disabled:opacity-50"
-                                                    aria-label={`Remove ${cartItem.item?.item_name ?? "item"} from cart`}
-                                                >
-                                                    {removingId === cartItem.id ? (
-                                                        <Loader2 size={18} className="animate-spin" />
-                                                    ) : (
-                                                        <Trash2 size={18} />
-                                                    )}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Card>
+                                        cartItem={cartItem}
+                                        removing={removingId === cartItem.id}
+                                        onRemove={() => handleRemove(cartItem.id)}
+                                    />
                                 ))}
                             </div>
 

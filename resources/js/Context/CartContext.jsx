@@ -5,22 +5,47 @@ const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
     const { cart: sharedCart } = usePage().props;
-    const [cart, setCart] = useState(sharedCart ?? null);
-    const [loading, setLoading] = useState(false);
+    // Inertia serializes JsonResources as { data: {...} }; unwrap so consumers
+    // read cart.items / cart.total_quantity directly.
+    const unwrap = (value) => (value?.data ?? value);
+
+    const [cart, setCart] = useState(() => unwrap(sharedCart));
+    const [addingItemIds, setAddingItemIds] = useState({});
 
     const itemCount = cart?.total_quantity ?? 0;
 
+    // Derived: true while any item is being added. Kept for consumers that
+    // only need a coarse "busy" flag (spinner, checkout button).
+    const loading = Object.keys(addingItemIds).length > 0;
+
     useEffect(() => {
-        setCart(sharedCart ?? null);
+        setCart(unwrap(sharedCart));
     }, [sharedCart]);
 
+    const isAddingItem = useCallback(
+        (itemId) => Boolean(addingItemIds[itemId]),
+        [addingItemIds]
+    );
+
     const addToCart = useCallback((itemId, quantity = 1) => {
-        setLoading(true);
+        setAddingItemIds((prev) => ({ ...prev, [itemId]: true }));
         router.post(route("cart.items.store"), { item_id: itemId, quantity }, {
             preserveState: true,
             preserveScroll: true,
-            onSuccess: () => setLoading(false),
-            onError: () => setLoading(false),
+            onSuccess: () => {
+                setAddingItemIds((prev) => {
+                    const next = { ...prev };
+                    delete next[itemId];
+                    return next;
+                });
+            },
+            onError: () => {
+                setAddingItemIds((prev) => {
+                    const next = { ...prev };
+                    delete next[itemId];
+                    return next;
+                });
+            },
         });
     }, []);
 
@@ -40,7 +65,7 @@ export function CartProvider({ children }) {
 
     const clearCart = useCallback(() => {
         setCart(null);
-        setLoading(false);
+        setAddingItemIds({});
     }, []);
 
     return (
@@ -49,6 +74,7 @@ export function CartProvider({ children }) {
             loading,
             itemCount,
             addToCart,
+            isAddingItem,
             updateQuantity,
             removeItem,
             clearCart,

@@ -13,10 +13,11 @@ export default function ProductCard({
     item_name,
     price,
 }) {
-    const { addToCart, loading } = useCart();
+    const { addToCart, isAddingItem } = useCart();
     const [imgError, setImgError] = useState(false);
     const displayImage = image && !imgError ? image : null;
     const displayCategory = category_name || category?.name || "General";
+    const adding = isAddingItem(id);
 
     const handleAddToCart = () => {
         addToCart(id, 1);
@@ -65,12 +66,12 @@ export default function ProductCard({
                     <Button
                         className="flex-1"
                         onClick={handleAddToCart}
-                        disabled={loading}
+                        disabled={adding}
                     >
                         <ShoppingBag size={18} />
 
                         <span className="ml-2">
-                            {loading ? "Adding..." : "Add to Cart"}
+                            {adding ? "Adding..." : "Add to Cart"}
                         </span>
                     </Button>
 
