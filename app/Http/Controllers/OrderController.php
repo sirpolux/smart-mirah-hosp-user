@@ -29,6 +29,13 @@ class OrderController extends Controller
             ->where('status', 'active')
             ->first();
 
+            if($user->detail === null){
+                return Redirect::route('profile.details.update')->with('flash', [
+                    'error' => 'Please complete your user details before proceeding to checkout.',
+                ]);
+            }
+
+            
         return Inertia::render('Checkout', [
             'cart' => $cart ? new CartResource($cart) : null,
             'user_details' => new UserDetailsResource($user->detail),
