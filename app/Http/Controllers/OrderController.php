@@ -35,7 +35,7 @@ class OrderController extends Controller
                 ]);
             }
 
-            
+
         return Inertia::render('Checkout', [
             'cart' => $cart ? new CartResource($cart) : null,
             'user_details' => new UserDetailsResource($user->detail),
@@ -66,6 +66,8 @@ class OrderController extends Controller
     {
         $user = Auth::user();
 
+        //dd($request->all());
+
         $cart = Cart::with(['items.item'])
             ->where('id', $request->cart_id)
             ->where('user_id', $user->id)
@@ -85,9 +87,11 @@ class OrderController extends Controller
         }
 
         DB::beginTransaction();
+     
 
         try {
             $receiptRef = 'ORD-' . strtoupper(uniqid());
+            dd($request->all()); 
 
             $order = Order::create([
                 'user_id' => $user->id,
@@ -109,12 +113,13 @@ class OrderController extends Controller
                     'unit_price' => $cartItem->unit_price,
                     'total_price' => $cartItem->total_price,
                 ]);
-            }
+            } 
 
             // Mark cart as completed
             $cart->update(['status' => 'completed']);
 
             DB::commit();
+           
 
             return Redirect::route('orders.show', $order)->with('flash', [
                 'success' => 'Order placed successfully! Your receipt ref: ' . $receiptRef,
