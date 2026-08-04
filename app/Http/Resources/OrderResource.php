@@ -20,6 +20,7 @@ class OrderResource extends JsonResource
             'total_quantity' => $this->total_quantity,
             'total_price' => (float) $this->total_price,
             'status' => $this->status,
+            'tracking_index' => $this->trackingIndex(),
             'delivery_channel' => $this->delivery_channel,
             'contact_number' => $this->contact_number,
             'delivery_address' => $this->delivery_address,
@@ -35,6 +36,7 @@ class OrderResource extends JsonResource
                     'item' => $item->item ? new ItemResource($item->item) : null,
                 ])
             ),
+            'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

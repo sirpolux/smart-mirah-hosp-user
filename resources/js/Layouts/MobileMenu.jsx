@@ -42,14 +42,23 @@ export default function MobileMenu({
                 <hr className="border-slate-200" />
 
                 {user ? (
-                    <Link
-                        href={route("profile.details")}
-                        onClick={onClose}
-                        className="flex items-center gap-2 font-medium text-slate-700"
-                    >
-                        <User size={18} />
-                        {user.name}
-                    </Link>
+                    <>
+                        <Link
+                            href={route("orders.index")}
+                            onClick={onClose}
+                            className="font-medium text-slate-700"
+                        >
+                            My Orders
+                        </Link>
+                        <Link
+                            href={route("profile.details")}
+                            onClick={onClose}
+                            className="flex items-center gap-2 font-medium text-slate-700"
+                        >
+                            <User size={18} />
+                            {user.name}
+                        </Link>
+                    </>
                 ) : (
                     <>
                         <Link

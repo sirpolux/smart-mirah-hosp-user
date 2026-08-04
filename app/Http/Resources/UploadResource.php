@@ -16,6 +16,7 @@ class UploadResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'public_id' => $this->public_id,
             'file_path' => $this->file_path,
             'file_type' => $this->file_type,
             'is_primary' => $this->is_primary,

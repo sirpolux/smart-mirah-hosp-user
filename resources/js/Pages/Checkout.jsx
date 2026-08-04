@@ -10,16 +10,16 @@ import InputError from "@/Components/InputError";
 import { ShoppingBag, ArrowLeft, Loader2, CheckCircle } from "lucide-react";
 import { useCart } from "@/Context/CartContext";
 
-export default function Checkout({ cart: propCart }) {
+export default function Checkout({ cart: propCart, user_details }) {
     const { cart: contextCart, clearCart } = useCart();
     const { auth } = usePage().props;
     const cart = propCart ?? contextCart;
     const user = auth?.user;
 
     const [form, setForm] = useState({
-        contact_number: user?.phone ?? "",
-        delivery_address: "",
-        delivery_state: "",
+        contact_number: user_details.data?.phone ?? "",
+        delivery_address: user_details.data?.address ?? "",
+        delivery_state: user_details.data?.state ?? "",
         delivery_channel: "delivery",
     });
 
@@ -27,8 +27,8 @@ export default function Checkout({ cart: propCart }) {
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(null);
 
-    const items = cart?.items ?? [];
-    const totalPrice = cart?.total_price ?? 0;
+    const items = cart.data?.items ?? [];
+    const totalPrice = cart.data?.total_price ?? 0;
 
     const handleChange = (e) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));

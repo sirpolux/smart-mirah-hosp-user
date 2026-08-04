@@ -53,13 +53,21 @@ export default function Navbar() {
                             </a>
 
                             {user ? (
-                                <Link
-                                    href={route("profile.details")}
-                                    className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
-                                >
-                                    <User size={18} />
-                                    {user.name}
-                                </Link>
+                                <>
+                                    <Link
+                                        href={route("orders.index")}
+                                        className="text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                                    >
+                                        My Orders
+                                    </Link>
+                                    <Link
+                                        href={route("profile.details")}
+                                        className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                                    >
+                                        <User size={18} />
+                                        {user.name}
+                                    </Link>
+                                </>
                             ) : (
                                 <>
                                     <Link

@@ -32,6 +32,23 @@ class Order extends Model
         'total_price' => 'float',
     ];
 
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_RECEIVED = 'received';
+    public const STATUS_PACKAGED = 'packaged';
+    public const STATUS_SHIPPED = 'shipped';
+    public const STATUS_DELIVERED = 'delivered';
+    public const STATUS_CANCELLED = 'cancelled';
+
+    /**
+     * Ordered tracking stages; entries after the current status are "upcoming".
+     */
+    public const TRACKING_STAGES = [
+        self::STATUS_RECEIVED,
+        self::STATUS_PACKAGED,
+        self::STATUS_SHIPPED,
+        self::STATUS_DELIVERED,
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -40,5 +57,22 @@ class Order extends Model
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class, 'order_id');
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'order_id');
+    }
+
+    /**
+     * The order tracking index: 0 when payment is not yet confirmed.
+     */
+    public function trackingIndex(): int
+    {
+        if (!in_array($this->status, self::TRACKING_STAGES, true)) {
+            return 0;
+        }
+
+        return array_search($this->status, self::TRACKING_STAGES, true) + 1;
     }
 }

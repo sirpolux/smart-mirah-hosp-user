@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\CartResource;
+use App\Http\Resources\OrderResource;
 use App\Http\Resources\UserDetailsResource;
+use App\Models\Account;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -34,7 +36,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Display a listing of the user's orders.
+     * Display a paginated listing of the user's orders.
      */
     public function index()
     {
@@ -46,7 +48,7 @@ class OrderController extends Controller
             ->paginate(10);
 
         return Inertia::render('Orders', [
-            'orders' => $orders,
+            'orders' => OrderResource::collection($orders),
         ]);
     }
 
@@ -120,7 +122,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Display the specified order.
+     * Display the specified order with its transactions and payment accounts.
      */
     public function show(Order $order)
     {
@@ -128,10 +130,17 @@ class OrderController extends Controller
             abort(403, 'Unauthorized access to order.');
         }
 
-        $order->load(['items.item.uploads', 'items.item.category']);
+        $order->load([
+            'items.item.uploads',
+            'items.item.category',
+            'transactions.uploads',
+        ]);
+
+        $accounts = Account::primaryAccount()->get();
 
         return Inertia::render('OrderDetail', [
-            'order' => $order,
+            'order' => new OrderResource($order),
+            'accounts' => $accounts,
         ]);
     }
 }
