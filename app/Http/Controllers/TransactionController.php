@@ -24,6 +24,8 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request): RedirectResponse
     {
+
+       // dd($request->all());
         $user = Auth::user();
 
         $order = Order::where('id', $request->order_id)

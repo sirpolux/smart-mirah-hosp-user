@@ -65,20 +65,20 @@ export default function OrderDetail({ order, accounts = [] }) {
                                     <p className="mt-1 text-sm text-slate-500">
                                         Reference:{" "}
                                         <span className="font-mono font-semibold text-primary-600">
-                                            {order.receipt_ref}
+                                            {order.data.receipt_ref}
                                         </span>
                                     </p>
                                     <p className="mt-1 text-xs text-slate-400">
                                         Placed on{" "}
-                                        {new Date(order.created_at).toLocaleString()}
+                                        {new Date(order.data.created_at).toLocaleString()}
                                     </p>
                                 </div>
-                                <OrderStatusBadge status={order.status} />
+                                <OrderStatusBadge status={order.data.status} />
                             </div>
 
                             {/* Items */}
                             <div className="mt-6 space-y-4">
-                                {(order.items ?? []).map((item) => (
+                                {(order.data.items ?? []).map((item) => (
                                     <div key={item.id} className="flex items-center justify-between gap-4">
                                         <div className="flex items-center gap-4">
                                             <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-slate-100">
@@ -112,28 +112,28 @@ export default function OrderDetail({ order, accounts = [] }) {
                             <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-lg font-bold">
                                 <span>Total</span>
                                 <span className="text-primary-600">
-                                    ₦{Number(order.total_price).toLocaleString()}
+                                    ₦{Number(order.data.total_price).toLocaleString()}
                                 </span>
                             </div>
 
                             {/* Delivery details */}
-                            {order.delivery_address && (
+                            {order.data.delivery_address && (
                                 <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">
                                     <p className="flex items-center gap-2 font-semibold text-slate-800">
                                         <MapPin size={16} />
                                         Delivery Details
                                     </p>
                                     <p className="mt-2">
-                                        {order.delivery_address}, {order.delivery_state}
+                                        {order.data.delivery_address}, {order.delivery_state}
                                     </p>
                                     <p className="mt-1 flex items-center gap-2">
                                         <Phone size={14} />
-                                        {order.contact_number}
+                                        {order.data.contact_number}
                                     </p>
                                     <p className="mt-1 flex items-center gap-2">
                                         <Truck size={14} />
                                         Channel:{" "}
-                                        <span className="capitalize">{order.delivery_channel}</span>
+                                        <span className="capitalize">{order.data.delivery_channel}</span>
                                     </p>
                                 </div>
                             )}
@@ -142,8 +142,8 @@ export default function OrderDetail({ order, accounts = [] }) {
                         {/* Tracking timeline */}
                         <Card className="mt-6 p-6 sm:p-8">
                             <OrderTrackingTimeline
-                                trackingIndex={order.tracking_index ?? 0}
-                                orderStatus={order.status}
+                                trackingIndex={order.data.tracking_index ?? 0}
+                                orderStatus={order.data.status}
                             />
                         </Card>
 

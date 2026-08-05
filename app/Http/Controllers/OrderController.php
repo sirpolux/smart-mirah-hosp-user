@@ -91,8 +91,7 @@ class OrderController extends Controller
 
         try {
             $receiptRef = 'ORD-' . strtoupper(uniqid());
-            dd($request->all()); 
-
+            
             $order = Order::create([
                 'user_id' => $user->id,
                 'total_quantity' => $cart->total_quantity,
@@ -104,6 +103,9 @@ class OrderController extends Controller
                 'delivery_channel' => $request->delivery_channel,
                 'receipt_ref' => $receiptRef,
             ]);
+
+         //   dd($cart->items); 
+
 
             foreach ($cart->items as $cartItem) {
                 OrderItem::create([
@@ -125,6 +127,8 @@ class OrderController extends Controller
                 'success' => 'Order placed successfully! Your receipt ref: ' . $receiptRef,
             ]);
         } catch (\Exception $e) {
+
+           // dd($e->getMessage());
             DB::rollBack();
 
             return Redirect::back()->with('flash', [

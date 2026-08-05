@@ -62,8 +62,8 @@ export default function PaymentSection({ order, accounts = [] }) {
     const [errors, setErrors] = useState({});
     const [submitting, setSubmitting] = useState(false);
 
-    const locked = isOrderLocked(order.status);
-    const transactions = order.transactions ?? [];
+    const locked = isOrderLocked(order.data.status);
+    const transactions = order.data.transactions ?? [];
 
     const handleFileChange = (e) => {
         setFile(e.target.files?.[0] ?? null);
@@ -81,7 +81,7 @@ export default function PaymentSection({ order, accounts = [] }) {
         setErrors({});
 
         const formData = new FormData();
-        formData.append("order_id", order.id);
+        formData.append("order_id", order.data.id);
         formData.append("evidence", file);
         formData.append("description", description);
 
@@ -126,7 +126,7 @@ export default function PaymentSection({ order, accounts = [] }) {
 
                     <p className="mt-4 rounded-xl bg-green-50 p-3 text-sm text-green-800">
                         Order total to pay:{" "}
-                        <span className="font-bold">{naira(order.total_price)}</span>
+                        <span className="font-bold">{naira(order.data.total_price)}</span>
                     </p>
                 </div>
 
