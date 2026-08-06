@@ -55,6 +55,12 @@ export default function Navbar() {
                             {user ? (
                                 <>
                                     <Link
+                                        href={route("cart.index")}
+                                        className="text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                                    >
+                                        Cart
+                                    </Link>
+                                    <Link
                                         href={route("orders.index")}
                                         className="text-sm font-medium text-slate-700 hover:text-primary-600 transition-colors"
                                     >
