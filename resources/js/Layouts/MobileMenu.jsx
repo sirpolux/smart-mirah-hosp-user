@@ -2,6 +2,7 @@ import { X, User } from "lucide-react";
 import { navigation } from "@/data/navigation";
 import { Link, usePage } from "@inertiajs/react";
 import Button from "@/Components/UI/Button";
+import { handleHashHref, isHash } from "@/lib/hashNavigation";
 
 export default function MobileMenu({
     open,
@@ -28,16 +29,30 @@ export default function MobileMenu({
 
             <div className="flex flex-col p-6 gap-6">
 
-                {navigation.map((item) => (
-                    <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={onClose}
-                        className="text-slate-700 font-medium"
-                    >
-                        {item.name}
-                    </Link>
-                ))}
+                {navigation.map((item) =>
+                    isHash(item.href) ? (
+                        <a
+                            key={item.name}
+                            href={item.href}
+                            onClick={(e) => {
+                                const handled = !handleHashHref(item.href, e);
+                                if (handled) onClose();
+                            }}
+                            className="text-slate-700 font-medium"
+                        >
+                            {item.name}
+                        </a>
+                    ) : (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={onClose}
+                            className="text-slate-700 font-medium"
+                        >
+                            {item.name}
+                        </Link>
+                    )
+                )}
 
                 <hr className="border-slate-200" />
 
@@ -80,7 +95,12 @@ export default function MobileMenu({
                     </>
                 )}
 
-                <Button variant="outline" className="w-full">
+                <Button
+                    variant="outline"
+                    className="w-full"
+                    href="#contact"
+                    onClick={onClose}
+                >
                     Request Quote
                 </Button>
 

@@ -1,5 +1,7 @@
+import { Link } from "@inertiajs/react";
 import Container from "./Container";
 import Logo from "@/Components/Shared/Logo";
+import { handleHashHref } from "@/lib/hashNavigation";
 
 export default function Footer() {
     return (
@@ -32,13 +34,41 @@ export default function Footer() {
 
                         <ul className="mt-4 space-y-3 text-slate-300">
 
-                            <li>About</li>
+                            <li>
+                                <a
+                                    href="#about"
+                                     onClick={(e) => handleHashHref("#about", e)}
+                                    className="hover:text-white transition-colors"
+                                >
+                                    About
+                                </a>
+                            </li>
 
-                            <li>Products</li>
+                            <li>
+                                <Link href={route("products")} className="hover:text-white transition-colors">
+                                    Products
+                                </Link>
+                            </li>
 
-                            <li>Services</li>
+                            <li>
+                                <a
+                                    href="#services"
+                                    onClick={(e) => handleHashHref("#services", e)}
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Services
+                                </a>
+                            </li>
 
-                            <li>Contact</li>
+                            <li>
+                                <a
+                                    href="#contact"
+                                    onClick={(e) => handleHashHref("#contact", e)}
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Contact
+                                </a>
+                            </li>
 
                         </ul>
 

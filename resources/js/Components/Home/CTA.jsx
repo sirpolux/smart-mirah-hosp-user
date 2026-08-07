@@ -25,6 +25,7 @@ export default function CTA() {
                         <Button
                             variant="secondary"
                             size="lg"
+                            href="#contact"
                         >
                             Request Quote
                         </Button>
@@ -32,6 +33,7 @@ export default function CTA() {
                         <Button
                             variant="outline"
                             size="lg"
+                            href="#contact"
                             className="border-white text-white hover:bg-white hover:text-primary-600"
                         >
                             Contact Sales

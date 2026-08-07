@@ -91,7 +91,11 @@ export default function Navbar() {
                                 </>
                             )}
 
-                            <Button size="sm" variant="outline">
+                            <Button
+                                size="sm"
+                                variant="outline"
+                                href="#contact"
+                            >
                                 Request Quote
                             </Button>
 

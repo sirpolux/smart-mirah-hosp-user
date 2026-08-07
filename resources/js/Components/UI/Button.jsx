@@ -1,5 +1,7 @@
 import { cva } from "class-variance-authority";
+import { Link } from "@inertiajs/react";
 import { cn } from "@/lib/utils";
+import { handleHashHref } from "@/lib/hashNavigation";
 
 const buttonVariants = cva(
     "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:pointer-events-none disabled:opacity-50",
@@ -41,18 +43,61 @@ export default function Button({
     className,
     variant,
     size,
+    href,
     children,
     ...props
 }) {
+    const classes = cn(
+        buttonVariants({
+            variant,
+            size,
+        }),
+        className
+    );
+
+    if (href) {
+        // External links (tel:, http:, mailto:) render as a plain anchor.
+        if (/^(https?:|mailto:|tel:)/.test(href)) {
+            return (
+                <a
+                    href={href}
+                    className={classes}
+                    {...props}
+                >
+                    {children}
+                </a>
+            );
+        }
+
+        if (href.startsWith("#")) {
+            return (
+                <a
+                    href={href}
+                    onClick={(e) => {
+                        props?.onClick?.(e);
+                        handleHashHref(href, e);
+                    }}
+                    className={classes}
+                >
+                    {children}
+                </a>
+            );
+        }
+
+        return (
+            <Link
+                href={href}
+                className={classes}
+                {...props}
+            >
+                {children}
+            </Link>
+        );
+    }
+
     return (
         <button
-            className={cn(
-                buttonVariants({
-                    variant,
-                    size,
-                }),
-                className
-            )}
+            className={classes}
             {...props}
         >
             {children}

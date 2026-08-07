@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Smooth same-page anchor scrolling, offsetting the sticky navbar (h-20 = 5rem). */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}

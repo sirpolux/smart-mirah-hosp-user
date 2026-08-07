@@ -5,7 +5,7 @@ export const navigation = [
     },
     {
         name: "About Us",
-        href: route("about"),
+        href: "#about",
     },
     {
         name: "Products",
@@ -13,11 +13,11 @@ export const navigation = [
     },
     {
         name: "Services",
-        href: route("services"),
+        href: "#services",
     },
     {
         name: "Contact",
-        href: route("contact"),
+        href: "#contact",
     },
     // {
     //     name: "Cart",

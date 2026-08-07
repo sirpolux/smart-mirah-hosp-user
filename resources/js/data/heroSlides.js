@@ -14,7 +14,11 @@ export const heroSlides = [
 
         primaryButton: "Request Bulk Quote",
 
+        primaryHref: "#contact",
+
         secondaryButton: "Browse Products",
+
+        secondaryHref: route("products"),
     },
 
     {
@@ -29,7 +33,11 @@ export const heroSlides = [
 
         primaryButton: "View Products",
 
+        primaryHref: route("products"),
+
         secondaryButton: "Contact Sales",
+
+        secondaryHref: "#contact",
     },
 
     {
@@ -44,6 +52,10 @@ export const heroSlides = [
 
         primaryButton: "Explore Branding",
 
+        primaryHref: "#about",
+
         secondaryButton: "Request Quote",
+
+        secondaryHref: "#contact",
     },
 ];

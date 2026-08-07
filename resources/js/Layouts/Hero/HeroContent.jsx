@@ -24,13 +24,17 @@ export default function HeroContent({ slide }) {
 
             <div className="mt-10 flex flex-wrap gap-4">
 
-                <Button size="lg">
+                <Button
+                    size="lg"
+                    href={slide.primaryHref}
+                >
                     {slide.primaryButton}
                 </Button>
 
                 <Button
                     variant="outline"
                     size="lg"
+                    href={slide.secondaryHref}
                     className="border-white text-white hover:bg-white hover:text-slate-900"
                 >
                     {slide.secondaryButton}

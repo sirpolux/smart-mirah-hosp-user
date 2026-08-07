@@ -42,7 +42,7 @@ export default function About() {
 
                         </div>
 
-                        <Button className="mt-10">
+                        <Button className="mt-10" href="tel:+2348143230391">
                             Learn More
                         </Button>
 

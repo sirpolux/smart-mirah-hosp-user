@@ -7,7 +7,7 @@ import { features } from "@/data/features";
 
 export default function WhyChooseUs() {
     return (
-        <Section className="bg-slate-50">
+        <Section id="services" className="bg-slate-50">
 
             <Container>
 
