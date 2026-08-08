@@ -37,7 +37,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#about"
-                                     onClick={(e) => handleHashHref("#about", e)}
+                                    onClick={(e) => handleHashHref("#about", e)}
                                     className="hover:text-white transition-colors"
                                 >
                                     About
