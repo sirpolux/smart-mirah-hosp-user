@@ -9,7 +9,7 @@ export default function Logo({
             className={`flex items-center gap-3 ${className}`}
         >
             <img
-                src="/images/logo.png"
+                src="/images/logo-with-name.png"
                 alt="SmartMirah"
                 className="h-10 w-auto"
             />
