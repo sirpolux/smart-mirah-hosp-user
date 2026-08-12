@@ -2,6 +2,7 @@ import { Link } from "@inertiajs/react";
 import Container from "./Container";
 import Logo from "@/Components/Shared/Logo";
 import { handleHashHref } from "@/lib/hashNavigation";
+import LogoWhite from "@/Components/Shared/LogoWhite";
 
 export default function Footer() {
     return (
@@ -13,7 +14,7 @@ export default function Footer() {
 
                     <div>
 
-                        <Logo />
+                        <LogoWhite />
 
                         <p className="mt-6 text-slate-300 leading-7">
 

@@ -5,7 +5,7 @@ import SectionTitle from "@/Components/UI/SectionTitle";
 import ContactInfo from "@/Layouts/Contact/ContactInfo";
 import ContactForm from "@/Layouts/Contact/ContactForm";
 
-export default function Contact() {
+export default function Contact({ flash }) {
     return (
         <Section id="contact">
 

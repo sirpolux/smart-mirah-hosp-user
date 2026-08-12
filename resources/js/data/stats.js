@@ -8,7 +8,7 @@ import {
 export const stats = [
     {
         id: 1,
-        value: 500,
+        value: 15,
         suffix: "+",
         label: "Hotels Served",
         icon: Hotel,
@@ -22,7 +22,7 @@ export const stats = [
     },
     {
         id: 3,
-        value: 25,
+        value: 10,
         suffix: "+",
         label: "States Covered",
         icon: MapPinned,

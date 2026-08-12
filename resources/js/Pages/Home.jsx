@@ -11,7 +11,7 @@ import Testimonials from "@/Components/Home/Testimonials";
 import CTA from "@/Components/Home/CTA";
 import Contact from "@/Components/Home/Contact";
 
-export default function Home({ items }) {
+export default function Home({ items, flash }) {
     return (
         <GuestLayout>
             <Hero />
@@ -23,7 +23,7 @@ export default function Home({ items }) {
             <Process />
             <Testimonials />
             <CTA />
-            <Contact />
+            <Contact flash={flash} />
         </GuestLayout>
     );
 }

@@ -42,4 +42,6 @@ return [
         'url' => env('CLOUDINARY_URL'),
     ],
 
+    'info_email' => env('INFO_EMAIL'),
+
 ];
