@@ -52,7 +52,7 @@
                     @endif
                     <tr>
                         <td style="background: #f8fafc; padding: 12px 16px; font-weight: 700; color: #0f172a; width: 160px;">Message</td>
-                        <td style="padding: 12px 16px; white-space: pre-wrap;">{{ $message }}</td>
+                        <td style="padding: 12px 16px; white-space: pre-wrap;">{{ $contactMessage }}</td>
                     </tr>
                 </table>
 

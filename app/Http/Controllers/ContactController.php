@@ -33,7 +33,7 @@ class ContactController extends Controller
                 company: $validated['company'] ?? null,
                 email: $validated['email'],
                 phone: $validated['phone'] ?? null,
-                message: $validated['message'],
+                contactMessage: $validated['message'],
             ));
 
         return back()->with('success', 'Your message has been sent. We will get back to you shortly.');
