@@ -1,11 +1,13 @@
-import { useForm } from "@inertiajs/react";
-import { Send } from "lucide-react";
+import { useForm, usePage } from "@inertiajs/react";
+import { CheckCircle, Send, XCircle } from "lucide-react";
 
 import Input from "@/Components/UI/Input";
 import Button from "@/Components/UI/Button";
 import InputError from "@/Components/InputError";
 
-export default function ContactForm({ flash }) {
+export default function ContactForm() {
+    const { flash } = usePage().props;
+
     const {
         data,
         setData,
@@ -33,9 +35,30 @@ export default function ContactForm({ flash }) {
 
     return (
         <form onSubmit={submit} className="space-y-5">
-            {flash?.success && (
-                <div className="rounded-xl bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
-                    {flash.success}
+            {(flash?.success || flash?.error) && (
+                <div
+                    aria-live="polite"
+                    className="space-y-3"
+                >
+                    {flash?.success && (
+                        <div className="flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
+                            <CheckCircle
+                                size={20}
+                                className="mt-0.5 shrink-0 text-green-500"
+                            />
+                            <span>{flash.success}</span>
+                        </div>
+                    )}
+
+                    {flash?.error && (
+                        <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                            <XCircle
+                                size={20}
+                                className="mt-0.5 shrink-0 text-red-500"
+                            />
+                            <span>{flash.error}</span>
+                        </div>
+                    )}
                 </div>
             )}
 
