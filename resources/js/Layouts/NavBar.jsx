@@ -44,7 +44,7 @@ export default function Navbar() {
                         <div className="hidden items-center gap-4 lg:flex">
 
                             <a
-                                href="tel:+2348143230391"
+                                href="tel:+2348129303840"
                                 className="flex items-center gap-2 text-sm"
                             >
                                 <Phone size={16} />
