@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { FaInstagram, FaTiktok } from "react-icons/fa6";
 import Container from "./Container";
 import Logo from "@/Components/Shared/Logo";
 import { handleHashHref } from "@/lib/hashNavigation";
@@ -22,6 +23,30 @@ export default function Footer() {
                             resorts and apartments across Nigeria.
 
                         </p>
+
+                        <div className="mt-6 flex items-center gap-3">
+
+                            <a
+                                href="https://www.instagram.com/smartmirahltd/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow us on Instagram"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition-colors hover:border-white hover:bg-white hover:text-slate-900"
+                            >
+                                <FaInstagram size={18} />
+                            </a>
+
+                            <a
+                                href="https://www.tiktok.com/@smartmirahltd"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow us on TikTok"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition-colors hover:border-white hover:bg-white hover:text-slate-900"
+                            >
+                                <FaTiktok size={18} />
+                            </a>
+
+                        </div>
 
                     </div>
 
