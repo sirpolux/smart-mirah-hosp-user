@@ -39,7 +39,7 @@ class HomeController extends Controller
      */
     public function about()
     {
-        return Inertia::render('Home');
+        return Inertia::render('About');
     }
 
     /**
@@ -47,7 +47,7 @@ class HomeController extends Controller
      */
     public function services()
     {
-        return Inertia::render('Home');
+        return Inertia::render('Services');
     }
 
     /**
@@ -55,7 +55,7 @@ class HomeController extends Controller
      */
     public function contact()
     {
-        return Inertia::render('Home');
+        return Inertia::render('Contact');
     }
 
     /**

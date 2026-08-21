@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
+import SeoHead from "@/Components/Shared/SeoHead";
 import Section from "@/Layouts/Section";
 import Container from "@/Layouts/Container";
 import Button from "@/Components/UI/Button";
@@ -51,6 +52,29 @@ export default function ProductDetail({ product }) {
     const safeActiveIndex = Math.min(activeIndex, Math.max(images.length - 1, 0));
     const activeImage = images[safeActiveIndex];
 
+    const productUrl = `https://smartmirah.com/products/${product.data.id}`;
+    const productJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.data.item_name,
+        description: product.data.item_description || undefined,
+        image: images.map((image) => image.file_path),
+        category: product.data.category?.name,
+        brand: product.data.manufacturer
+            ? { "@type": "Brand", name: product.data.manufacturer }
+            : undefined,
+        offers: {
+            "@type": "Offer",
+            url: productUrl,
+            priceCurrency: "NGN",
+            price: Number(product.data.price),
+            availability:
+                product.data.status === "available"
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+        },
+    };
+
     const handleSelectImage = (index) => {
         setActiveIndex(index);
         setImgError(false);
@@ -62,6 +86,20 @@ export default function ProductDetail({ product }) {
 
     return (
         <GuestLayout>
+            <SeoHead
+                title={product.data.item_name}
+                description={
+                    product.data.item_description ||
+                    `${product.data.item_name} — premium hospitality supply from Smart Mirah Hospitality, trusted by hotels across Nigeria.`
+                }
+                image={activeImage?.file_path}
+                path={`/products/${product.data.id}`}
+                type="product"
+            >
+                <script type="application/ld+json">
+                    {JSON.stringify(productJsonLd)}
+                </script>
+            </SeoHead>
             <Section>
                 <Container>
                     {/* Breadcrumb */}

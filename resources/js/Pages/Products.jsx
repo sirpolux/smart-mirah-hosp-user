@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
+import SeoHead from "@/Components/Shared/SeoHead";
 import Section from "@/Layouts/Section";
 import Container from "@/Layouts/Container";
 import SectionTitle from "@/Components/UI/SectionTitle";
@@ -13,6 +14,11 @@ export default function Products({ items }) {
 
     return (
         <GuestLayout>
+            <SeoHead
+                title="Our Products"
+                description="Browse our complete range of premium hospitality products — guest amenities, hotel kits, luxury linens and more — trusted by hotels across Nigeria."
+                path="/products"
+            />
             <Section>
                 <Container>
 

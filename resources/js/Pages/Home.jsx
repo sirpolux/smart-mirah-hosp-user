@@ -1,4 +1,5 @@
 import GuestLayout from "@/Layouts/GuestLayout";
+import SeoHead from "@/Components/Shared/SeoHead";
 
 import Hero from "@/Components/Home/Hero";
 import Clients from "@/Components/Home/Clients";
@@ -14,6 +15,11 @@ import Contact from "@/Components/Home/Contact";
 export default function Home({ items, flash }) {
     return (
         <GuestLayout>
+            <SeoHead
+                title="Premium Hospitality Supplies in Nigeria"
+                description="Smart Mirah Hospitality supplies premium guest amenities, hotel kits, luxury linens and branded hospitality products — trusted by hotels across Nigeria."
+                path="/"
+            />
             <Hero />
             <Clients />
             <About />
