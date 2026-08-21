@@ -16,7 +16,7 @@ const STATUS_STYLES = {
 
 const LABELS = {
     ...ORDER_STATUS_LABELS,
-    ...TRANSACTION_STATUS_LABELS,
+    // ...TRANSACTION_STATUS_LABELS,
 };
 
 export default function OrderStatusBadge({

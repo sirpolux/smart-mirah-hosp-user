@@ -47,7 +47,7 @@ class TransactionController extends Controller
         DB::beginTransaction();
 
         try {
-            $uploaded = $this->cloudinary->upload($request->file('evidence'), 'payment_evidence');
+            $uploaded = $this->cloudinary->upload($request->file('evidence'), 'smart_mirah_hospitality');
 
             $transaction = Transaction::create([
                 'user_id' => $user->id,

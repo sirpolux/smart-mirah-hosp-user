@@ -177,7 +177,7 @@ export default function PaymentSection({ order, accounts = [] }) {
                                             Click to select receipt / transfer screenshot
                                         </p>
                                         <p className="mt-1 text-xs text-slate-400">
-                                            JPG, PNG, WEBP or PDF (max 5MB)
+                                            JPG, PNG, WEBP or JPEG (max 5MB)
                                         </p>
                                     </>
                                 )}

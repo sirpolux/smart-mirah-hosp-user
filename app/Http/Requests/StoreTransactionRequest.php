@@ -15,7 +15,7 @@ class StoreTransactionRequest extends FormRequest
     {
         return [
             'order_id' => ['required', 'integer', 'exists:orders,id'],
-            'evidence' => ['required', 'file', 'mimes:jpg,jpeg,png,pdf,webp', 'max:5120'],
+            'evidence' => ['required', 'file', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'description' => ['nullable', 'string', 'max:500'],
         ];
     }

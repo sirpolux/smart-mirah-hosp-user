@@ -49,7 +49,7 @@ class OrderController extends Controller
     {
         $user = Auth::user();
 
-        $orders = Order::with(['items.item.uploads', 'items.item.category'])
+        $orders = Order::with(['items.item.uploads', 'items.item.category','transactions'])
             ->where('user_id', $user->id)
             ->orderBy('created_at', 'desc')
             ->paginate(10);

@@ -61,7 +61,7 @@ export default function OrderDetail({ order, accounts = [] }) {
                         <Card className="p-6 sm:p-8">
                             <div className="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 pb-5">
                                 <div>
-                                    <h1 className="text-2xl font-bold text-slate-900">Order Receipt</h1>
+                                    <h1 className="text-2xl font-bold text-slate-900">Order Info</h1>
                                     <p className="mt-1 text-sm text-slate-500">
                                         Reference:{" "}
                                         <span className="font-mono font-semibold text-primary-600">

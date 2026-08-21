@@ -16,15 +16,15 @@ class TransactionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'order_id' => $this->order_id,
+            // 'order_id' => $this->order_id,
             'amount' => (float) $this->amount,
             'description' => $this->description,
             'status' => $this->status,
-            'purpose' => $this->purpose,
+            // 'purpose' => $this->purpose,
             'confirmed_at' => $this->confirmed_at,
             'uploads' => UploadResource::collection($this->whenLoaded('uploads')),
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

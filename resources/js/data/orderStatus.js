@@ -8,7 +8,7 @@ export const ORDER_STATUS_LABELS = {
 };
 
 export const TRANSACTION_STATUS_LABELS = {
-    pending: "Pending Upload/Verification",
+    pending: "Payment Uploaded",
     confirmed: "Payment Confirmed",
     rejected: "Payment Rejected",
     failed: "Payment Failed",

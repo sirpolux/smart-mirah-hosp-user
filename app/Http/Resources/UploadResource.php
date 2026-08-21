@@ -19,9 +19,9 @@ class UploadResource extends JsonResource
             'public_id' => $this->public_id,
             'file_path' => $this->file_path,
             'file_type' => $this->file_type,
-            'is_primary' => $this->is_primary,
+            // 'is_primary' => $this->is_primary,
             'position' => $this->position,
-            'uploaded_by' => $this->uploaded_by,
+            // 'uploaded_by' => $this->uploaded_by,
             'created_at' => $this->created_at,
         ];
     }
