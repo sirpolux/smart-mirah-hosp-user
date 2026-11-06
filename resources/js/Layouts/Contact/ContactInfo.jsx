@@ -31,8 +31,7 @@ export default function ContactInfo() {
                     <MapPin className="text-primary-600"/>
 
                     <span>
-                        11 Adepegba Street,
-                        Abule Egba, Lagos
+                    30, Olaniyi street, Abulegba Lagos Nigeria
                     </span>
 
                 </div>
